@@ -12,7 +12,6 @@ import MoBettaAST
 
 type Parser = Parsec Void String
 
---programParser = sepEndBy1 statementParser semicolon <?> "program"
 programParser = do
   spaceConsumer
   sepEndBy1 statementParser semicolon <?>  "program"
@@ -66,7 +65,6 @@ statementParser = choice
 
 aExpr = makeExprParser aFactor aOpTable <?> "arithmetic expression"
 
--- parenthesized expressions are missing
 aFactor = choice [
                   intConst
                 , identifierExpr
@@ -86,7 +84,6 @@ bExpr = makeExprParser bFactor bOpTable <?> "Boolean expression"
 
 bFactor = choice [ comparison
                  , between lparen rparen bExpr
---                 , boolConst
                  ] <?> "boolean factor"
 
 

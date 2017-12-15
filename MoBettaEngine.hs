@@ -14,7 +14,6 @@ Because our language does not support function definitions and recursion, the st
 --}
 
 import System.IO
---import Data.Hashable
 import qualified Data.HashMap as HM-- easy lookup and update of variables
 import Control.Monad.State
 import Control.Applicative
@@ -207,5 +206,3 @@ intCalc (AUn op expr) = do
   n <- (intCalc expr)
   let func = (opLookup op unOpTable)
   return $ func n
-  --n <- expr
-  --return $ negate n
